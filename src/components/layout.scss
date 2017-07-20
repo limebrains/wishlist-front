@@ -34,3 +34,16 @@ $linkhover: #94c;
     width: 500px;
   }
 }
+
+.center {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align: center;
+}
+
+.right {
+  justify-content:right;
+  align-items: right;
+  text-align: right;
+}

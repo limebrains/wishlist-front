@@ -1,2 +1,3 @@
-import { titleReducer } from './titles';
-export { titleReducer };
+import {accountReducer} from "./accountReducer";
+
+export { accountReducer  };

@@ -3,6 +3,7 @@ declare var window: any;
 /* Redux */
 import { routerReducer, syncHistoryWithStore } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore  } from 'redux';
+const reduxPromise = require('redux-promise');
 
 /* React Router */
 import * as reactRouter from 'react-router';
@@ -24,18 +25,16 @@ function configureStore(initialState: any): any {
   // Initial the redux devtools for Chrome
   // https://github.com/zalmoxisus/redux-devtools-extension/
   const createdStore = createStore(reducer, initialState, compose(
-    applyMiddleware(),
-    window.devToolsExtension ? window.devToolsExtension() : (f: any) => f
+      applyMiddleware(reduxPromise),
+      window.devToolsExtension ? window.devToolsExtension() : (f: any) => f
   ));
 
   const { hot } = module as any;
   if (hot) {
     // Enable Webpack hot module replacement for reducers
     hot.accept('./reducers', () => {
-      const titleReducer = require('./reducers/titles');
       const nextReducer = combineReducers({
         routing: routerReducer,
-        titleReducer,
       });
       createdStore.replaceReducer(nextReducer);
     });

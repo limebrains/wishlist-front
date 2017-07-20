@@ -1,8 +1,4 @@
-export const TITLES = [
-  'React Redux Boilerplate',
-  'React',
-  'Redux',
-  'Boilerplate',
-];
-
-export const GET_NEXT_TITLE = 'GET_NEXT_TITLE';
+export class Config {
+  public static API_URL = 'http://localhost:8000/api';
+  public static TOKEN_URL = '/api-token-auth/';
+}
