@@ -10,6 +10,7 @@ interface IProps {
   dispatch?: any;
   login?: any;
   route?: any;
+  token?: string;
 }
 
 interface IState {
@@ -20,8 +21,7 @@ interface IState {
 
 const mapStateToProps = (state: any): IProps => {
   return {
-
-
+  token: state.accountReducer.token
   };
 };
 
@@ -43,7 +43,7 @@ export default class LoginForm extends React.Component<IProps, IState>  {
     this.setState({...this.state, [event.target.name]: event.target.value });
   };
 
-  public login = (event: any): void => {
+  public makelogin = (event: any): void => {
     event.preventDefault();
     const {username, password} = this.state;
     this.props.login(username, password);
@@ -55,7 +55,7 @@ export default class LoginForm extends React.Component<IProps, IState>  {
         <div className="container">
           <div className="row row-center center">
             <div className="column column-60">
-              <form onSubmit={this.login}>
+              <form onSubmit={this.makelogin}>
                 <fieldset>
                   <label htmlFor="nameField">Username</label>
                   <input type="text" name="username" onChange={this.handleChange} />

@@ -1,23 +1,31 @@
-import {LOGIN} from '../actions/loginRegister';
+import {LOGIN, RETRIEVE_TOKEN, GET_USER_DATA} from '../actions/loginRegister';
 const localStorage = require('local-storage-fallback');
 
 export const LOCAL_STORAGE_SAVED_TOKEN = "token";
 
 interface IauthState {
   token?: string;
+  userData?: UserJSON;
+}
+
+interface UserJSON {
+  pk: number;
+  username: string;
+  email: string;
 }
 
 const initialState: IauthState = {
-  token: null
+  token: null,
+  userData: null
 };
 
 
 export const getSavedToken = () => {
   try {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_SAVED_TOKEN)) || [];
+    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_SAVED_TOKEN)) || null;
   } catch (e) {
     console.log(e);
-    return [];
+    return null;
   }
 };
 
@@ -32,12 +40,23 @@ export const saveSessionToken = (token: string) => {
 
 
 const accountReducer = (state = initialState, action: any ) => {
-    switch (action.type) {
+  switch (action.type) {
     case LOGIN:
       saveSessionToken(action.payload.data.token);
+      console.log(getSavedToken());
       return {
         ...state,
         token: action.payload.data.token
+      };
+    case RETRIEVE_TOKEN:
+      return{
+        ...state,
+        token: getSavedToken()
+      };
+    case GET_USER_DATA:
+      return{
+        ...state,
+        userData: action.payload.data
       };
     default:
       return state;

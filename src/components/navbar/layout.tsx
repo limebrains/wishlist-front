@@ -2,6 +2,7 @@ import * as React from 'react';
 import {StatelessComponent} from 'react';
 import '../layout.scss';
 import '../CSS/milligram.css';
+import TopBar from "./navbar";
 
 interface ILayout {
     children: React.ComponentElement<any, any>;
@@ -13,7 +14,7 @@ const Navbar: StatelessComponent<ILayout> = ({children}): any => {
             <div className="row">
                 <div className="column column-20">Navbar</div>
                 <div className="column column-60 center">Navbar</div>
-                <div className="column column-20 right">User</div>
+                <TopBar />
 
             </div>
 
