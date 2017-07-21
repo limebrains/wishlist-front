@@ -59,6 +59,7 @@
     "axios": "^0.16.2",
     "bootstrap": "^4.0.0-alpha.6",
     "expose-loader": "^0.7.3",
+    "local-storage-fallback": "^3.0.0",
     "postcss-loader": "^2.0.6",
     "purecss": "^1.0.0",
     "react": "^15.4.2",

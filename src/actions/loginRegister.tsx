@@ -15,7 +15,6 @@ export const login = (username: string, password: string) => {
   const token = axios.post(API_URL + TOKEN_URL, formData, {
 
   });
-  console.log(token);
   return {
     payload: token,
     type: LOGIN,
