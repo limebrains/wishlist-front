@@ -44,12 +44,10 @@ export default class TopBar extends React.Component<IProps, IState> {
     if (!this.props.token){
       this.props.retrieveSessionToken();
     }
-
-
   }
 
-  public componentWillUpdate(){
-    if (!this.props.userData) {
+  public componentDidUpdate(){
+    if (!this.props.userData && this.props.token) {
       this.props.getUserData(this.props.token)
     }
   }

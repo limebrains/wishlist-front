@@ -21,7 +21,7 @@ interface IState {
 
 const mapStateToProps = (state: any): IProps => {
   return {
-  token: state.accountReducer.token
+    token: state.accountReducer.token
   };
 };
 
@@ -47,7 +47,9 @@ export default class LoginForm extends React.Component<IProps, IState>  {
     event.preventDefault();
     const {username, password} = this.state;
     this.props.login(username, password);
-    browserHistory.push('/');
+    if(this.props.token){
+      browserHistory.push('/');
+    }
   };
 
   public render() {

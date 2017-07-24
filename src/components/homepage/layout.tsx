@@ -21,10 +21,8 @@ export default class IndexPage extends React.Component<IProps, {}>  {
             </div>
           </div>
 
-          <div className="center">
-
-          < LoginOrShow />
-
+          <div className="row">
+            < LoginOrShow />
           </div>
         </div>
 

@@ -9,20 +9,19 @@ interface IauthState {
 }
 
 const initialState: IauthState = {
-  wishlists: null,
-  items: null
+  wishlists: [],
+  items: []
 };
 
 
-const accountReducer = (state = initialState, action: any ) => {
+const wishlistReducer = (state = initialState, action: any ) => {
   switch (action.type) {
     case GET_USER_WISHLISTS:
       return{
         ...state,
-        wishlists: [...state.wishlists. action.payload.data ],
+        wishlists: [...state.wishlists, action.payload.data.results ],
 
       };
-
     case GET_WISHLIST_ITEMS:
       return{
         ...state,
@@ -36,5 +35,5 @@ const accountReducer = (state = initialState, action: any ) => {
 };
 
 export {
-  accountReducer
+  wishlistReducer
 };

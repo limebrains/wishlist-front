@@ -11,10 +11,10 @@ const {
 
 export const getUserWishlists = (token:string ) => {
   const wishlists = axios.get(API_URL + WISHLISTS_URL, {
-         headers: {Authorization: "Token " + token},
-       }
-   );
-      return {
+        headers: {Authorization: "Token " + token},
+      }
+  );
+  return {
     payload: wishlists,
     type: GET_USER_WISHLISTS,
   }
@@ -22,11 +22,12 @@ export const getUserWishlists = (token:string ) => {
 
 export const getWishlistItems = (token:string, pk: number ) => {
   const items = axios.get(API_URL + WISHLISTS_URL + pk + '/' + ITEM_URL , {
-         headers: {Authorization: "Token " + token},
-       }
-   );
-      return {
+        headers: {Authorization: "Token " + token},
+      }
+  );
+  return {
     payload: items,
+    pk: pk,
     type: GET_WISHLIST_ITEMS,
   }
 };

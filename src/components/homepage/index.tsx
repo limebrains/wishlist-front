@@ -3,6 +3,7 @@ import '../layout.scss';
 import '../CSS/milligram.css';
 import {connect} from "react-redux";
 import {Link} from "react-router";
+import Wishlists from "./wishlists";
 
 interface IProps {
   dispatch?: any;
@@ -45,7 +46,7 @@ export default class LoginOrShow extends React.Component<IProps, IState> {
       );
     }
     else {
-      return(<div className="">Content</div>)
+      return(<div className="column column-100"><Wishlists /></div>)
     }
   }
 }
