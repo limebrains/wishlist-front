@@ -1,8 +1,9 @@
 $linkhormal: #39c;
 $linkhover: #94c;
-$background: #658fd2;
-$panels: #96b9f3;
+$background: #c4c4c4;
+$panels: #f2f2f2;
 $panels-font-colour: #1c286b;
+$expand-colour: #0b5fe5;
 
 body{
   background: $background;;
@@ -48,7 +49,7 @@ body{
     padding: 10px 10px 10px 25px !important;
     box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.16);
     overflow-x: scroll;
-    height: auto;
+    height: 11vh;
   }
 
   .h7{
@@ -56,12 +57,25 @@ body{
     letter-spacing:0.01rem
   }
 
+
   .wishlist-name{
     font-weight: 300;
     letter-spacing:-.05rem;
     font-size: 2rem;
   }
 
+  .dropdown-arrow{
+    font-weight: 900;
+    cursor: pointer;
+    cursor: hand;
+    font-size: 2rem;
+    margin-left: 1vw;
+
+    &:hover {
+      color: $expand-colour;
+      transition: 1s;
+    }
+  }
 }
 
 .center {
@@ -76,3 +90,4 @@ body{
   align-items: right;
   text-align: right;
 }
+

@@ -6,7 +6,7 @@ export const GET_WISHLIST_ITEMS = 'get_wishlist_item';
 const {
     API_URL,
     WISHLISTS_URL,
-    ITEM_URL
+    ITEM_URL,
 } = Config;
 
 export const getUserWishlists = (token:string ) => {

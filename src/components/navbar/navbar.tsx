@@ -3,6 +3,7 @@ import '../layout.scss';
 import '../CSS/milligram.css';
 import {connect} from "react-redux";
 import {retrieveSessionToken, getUserData} from "../../actions/loginRegister";
+import {Link} from "react-router";
 
 
 interface UserJSON {
@@ -62,7 +63,11 @@ export default class TopBar extends React.Component<IProps, IState> {
       );
     }
     else {
-      return <div className="div">DUPA</div>
+      return(
+          <div className="column column-20 right">
+            <Link to="/login">Login</Link> or register!
+          </div>
+      );
     }
   }
 }
