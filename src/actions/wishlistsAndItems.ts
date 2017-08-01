@@ -3,6 +3,7 @@ import {Config} from "../constants";
 
 export const GET_USER_WISHLISTS = 'get_user_wishlists';
 export const GET_WISHLIST_ITEMS = 'get_wishlist_item';
+export const DROPDOWN_WISHLIST = 'dropdown_wishlist';
 const {
     API_URL,
     WISHLISTS_URL,
@@ -17,6 +18,14 @@ export const getUserWishlists = (token:string ) => {
   return {
     payload: wishlists,
     type: GET_USER_WISHLISTS,
+  }
+};
+
+export const dropdownWishlist = (key: number, wishlist:any) => {
+    return {
+    id: key,
+      payload: wishlist,
+    type: DROPDOWN_WISHLIST,
   }
 };
 

@@ -4,7 +4,7 @@ import '../CSS/milligram.css';
 import '../CSS/loader.scss';
 
 import {connect} from "react-redux";
-import {getUserWishlists} from "../../actions/wishlistsAndItems";
+import {getUserWishlists, dropdownWishlist} from "../../actions/wishlistsAndItems";
 import {LoaderComponent} from "../common/loader";
 import EventHandler = React.EventHandler;
 
@@ -17,6 +17,7 @@ interface IProps {
   getUserWishlists?: any;
   getWishlistItems?: any;
   retrieveSessionToken?: any;
+  dropdownWishlist?: any;
 
 }
 
@@ -31,7 +32,7 @@ const mapStateToProps = (state: any): IProps => {
   };
 };
 
-const mapDispatchToProps = {getUserWishlists};
+const mapDispatchToProps = {getUserWishlists, dropdownWishlist};
 
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
@@ -51,16 +52,20 @@ export default class Wishlists extends React.Component<IProps, IState> {
     }
   }
 
-  private expandWishlist = (wishlist: any) => {
+  private expandWishlist = (id: number, wishlist:any) => {
 
     return (e: any) => {
-      const wishlists = this.props.wishlists[0];
-      console.log(wishlists.length);
+      const wishlists = this.props.wishlists;
+      let index;
+
       for (let i = 0; i < wishlists.length; i++) {
-        if (wishlists[i].pk === wishlist.pk){
-          console.log(wishlists[i]);
+        if (wishlists[i].pk === id){
+          index = i;
         }
       }
+
+      wishlist['expand'] = true;
+      this.props.dropdownWishlist(index, wishlist);
     }
 
   };
@@ -87,7 +92,7 @@ export default class Wishlists extends React.Component<IProps, IState> {
             {wishlist.items.length !== 0 && wishlist.items.length} items!
 
             <span className="dropdown-arrow"
-                  onClick={this.expandWishlist(wishlist)}
+                  onClick={this.expandWishlist(wishlist.pk, wishlist)}
             >
               &#8595;
           </span>
@@ -101,7 +106,7 @@ export default class Wishlists extends React.Component<IProps, IState> {
   };
 
   public renderWishlists = () => {
-    const wishlists = this.props.wishlists[0];
+    const {wishlists} = this.props;
     return(
         <div className="wishlists">
           {wishlists &&
