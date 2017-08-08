@@ -7,6 +7,13 @@ export interface Iwishlist {
   items?: any;
   length: number;
   expand: boolean;
-  owner: any;
+  owner: Iuser;
+  users: Iuser[];
 
+}
+
+export interface Iuser {
+  email: string;
+  username: string;
+  pk: number
 }

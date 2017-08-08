@@ -17,7 +17,7 @@ export default class IndexPage extends React.Component<IProps, {}>  {
         <div className="container">
           <div className="row">
             <div className="column center">
-              <h1>Welcome to Wishlist app</h1>
+              <h1>Your Wishlists</h1>
             </div>
           </div>
 

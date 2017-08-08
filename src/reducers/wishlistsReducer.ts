@@ -1,10 +1,9 @@
 const update = require('react-addons-update');
 import {GET_USER_WISHLISTS, GET_WISHLIST_ITEMS, DROPDOWN_WISHLIST} from "../actions/wishlistsAndItems";
-
-
+import {Iwishlist} from "../components/common/interfaces";
 
 interface IauthState {
-  wishlists: any,
+  wishlists: Iwishlist[],
   items: any
 }
 

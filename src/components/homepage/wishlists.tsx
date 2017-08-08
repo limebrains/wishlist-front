@@ -70,10 +70,11 @@ export default class Wishlists extends React.Component<IProps, IState> {
 
   };
 
-  public renderItems = (wishlist:Iwishlist) => {
+  public renderItems = (item:any) => {
     return (
-        <div className="">
-          asdf
+        <div className="item-details" key={item.pk}>
+          <div className="item-name center">{item.name}</div>
+
         </div>
     );
   };
@@ -83,29 +84,29 @@ export default class Wishlists extends React.Component<IProps, IState> {
     return (
         <div className="details" key={`details-${wishlist.pk}`}>
           <div className="wishlist-detail-info">
-            {wishlist.owner.username}
-            {wishlist.date_created}
-            {wishlist.date_updated}
+            Created by <b>{wishlist.owner.username}</b> on {wishlist.date_created}. Last updated: {wishlist.date_updated}
           </div>
           <div className="items">
-            {this.renderItems(wishlist)}
+            {wishlist.items &&
+          wishlist.items.map((item: any) => {
+            return this.renderItems(item)
+          })}
           </div>
-
         </div>
     );
   };
 
   public renderWishlist = (wishlist: Iwishlist) => {
     return(
-        <div className="wishlist" key={wishlist.pk}>
+        <div className="wishlist row column" key={wishlist.pk}>
           <div className="wishlist-panel row">
             <div className="column column-30">
               <span className="wishlist-name">{wishlist.name}</span>
             </div>
             <div className="column column-30 wishlist-description">
-              <span className="h7">{wishlist.description}</span>
+              {wishlist.description}
             </div>
-            <div className="column column-40 h7 right">
+            <div className="column column-40 right">
               {wishlist.items.length === 0 && ('There is no ')}
               {wishlist.items.length !== 0 && wishlist.items.length} items!
 

@@ -1,17 +1,12 @@
 import {LOGIN, RETRIEVE_TOKEN, GET_USER_DATA} from '../actions/loginRegister';
+import {Iuser} from "../components/common/interfaces";
 const localStorage = require('local-storage-fallback');
 
 export const LOCAL_STORAGE_SAVED_TOKEN = "token";
 
 interface IauthState {
   token?: string;
-  userData?: UserJSON;
-}
-
-interface UserJSON {
-  pk: number;
-  username: string;
-  email: string;
+  userData?: Iuser;
 }
 
 const initialState: IauthState = {
