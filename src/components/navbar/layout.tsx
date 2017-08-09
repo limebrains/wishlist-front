@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {StatelessComponent} from 'react';
 import '../layout.scss';
-import '../CSS/milligram.css';
 import LoginComponent from "./loginComponent";
 
 interface ILayout {
@@ -12,9 +11,9 @@ const Navbar: StatelessComponent<ILayout> = ({children}): any => {
   return (
       <div className="page-container">
         <div className="navbar row ">
-          <div className="column column-30">Navbar</div>
-          <div className="column column-40 center">Welcome to Wishlist App</div>
           <LoginComponent />
+          <div className="col-sm-9 right">Welcome to Wishlist App</div>
+
         </div>
         <div className="row">
           {children}

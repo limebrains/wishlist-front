@@ -1,6 +1,5 @@
 import * as React from 'react';
 import '../layout.scss';
-import '../CSS/milligram.css';
 import {connect} from "react-redux";
 import {Link} from "react-router";
 import Wishlists from "./wishlists";
@@ -32,8 +31,8 @@ export default class LoginOrShow extends React.Component<IProps, IState> {
   public render() {
     if (!this.props.token){
       return(
-          <div className="row row-center">
-            <div className="column ">
+          <div className="row container-fluid">
+            <div className="">
               <Link to="/login">
                 <button className="button">login</button>
               </Link>
@@ -46,7 +45,7 @@ export default class LoginOrShow extends React.Component<IProps, IState> {
       );
     }
     else {
-      return(<div className="column column-100"><Wishlists /></div>)
+      return(<div className="container"><Wishlists /></div>)
     }
   }
 }

@@ -1,13 +1,11 @@
-import * as React from 'react';
-import '../layout.scss';
-import '../CSS/milligram.css';
-import '../CSS/loader.scss';
-
+import * as React from "react";
+import "../layout.scss";
+import "../CSS/loader.scss";
 import {connect} from "react-redux";
 import {getUserWishlists, dropdownWishlist} from "../../actions/wishlistsAndItems";
 import {LoaderComponent} from "../common/loader";
-import EventHandler = React.EventHandler;
 import {Iwishlist} from "../common/interfaces";
+import EventHandler = React.EventHandler;
 
 
 interface IState {
@@ -88,9 +86,9 @@ export default class Wishlists extends React.Component<IProps, IState> {
           </div>
           <div className="items">
             {wishlist.items &&
-          wishlist.items.map((item: any) => {
-            return this.renderItems(item)
-          })}
+            wishlist.items.map((item: any) => {
+              return this.renderItems(item)
+            })}
           </div>
         </div>
     );
@@ -98,28 +96,35 @@ export default class Wishlists extends React.Component<IProps, IState> {
 
   public renderWishlist = (wishlist: Iwishlist) => {
     return(
-        <div className="wishlist row column" key={wishlist.pk}>
-          <div className="wishlist-panel row">
-            <div className="column column-30">
-              <span className="wishlist-name">{wishlist.name}</span>
-            </div>
-            <div className="column column-30 wishlist-description">
-              {wishlist.description}
-            </div>
-            <div className="column column-40 right">
-              {wishlist.items.length === 0 && ('There is no ')}
-              {wishlist.items.length !== 0 && wishlist.items.length} items!
+          <div className="wishlist" key={wishlist.pk}>
+            <div className="row">
+              <div className="wishlist-panel col-xs-12">
+                <div className="row ">
+                    <div className="col-sm-4">
+                      <span className="wishlist-name">{wishlist.name}</span>
+                    </div>
+                    <div className="col-sm-4 wishlist-description">
+                      {wishlist.description}
+                    </div>
+                    <div className="col-sm-4 right">
+                      {wishlist.items.length === 0 && ('There is no ')}
+                      {wishlist.items.length !== 0 && wishlist.items.length} items!
 
-              <span className="dropdown-arrow"
-                    onClick={this.expandWishlist(wishlist.pk, wishlist)}
-              >
+                      <span className="dropdown-arrow"
+                            onClick={this.expandWishlist(wishlist.pk, wishlist)}
+                      >
               &#8595;
           </span>
+                    </div>
+                  </div></div>
+            </div>
 
+            <div className="row">
+              <div className="col-sm-12">
+                {wishlist.expand && this.renderWishlistDetails(wishlist)}
+              </div>
             </div>
           </div>
-          {wishlist.expand && this.renderWishlistDetails(wishlist)}
-        </div>
 
     );
   };
@@ -127,7 +132,7 @@ export default class Wishlists extends React.Component<IProps, IState> {
   public renderWishlists = () => {
     const {wishlists} = this.props;
     return(
-        <div className="wishlists">
+        <div>
           {wishlists &&
           wishlists.map((wishlist: Iwishlist) => {
             return this.renderWishlist(wishlist)
@@ -142,12 +147,8 @@ export default class Wishlists extends React.Component<IProps, IState> {
 
   public render() {
     return (
-        <div className="row">
-          <div className="column column-100">
-            {this.renderWishlists()}
-            <div className="row">
-            </div>
-          </div>
+        <div>
+          {this.renderWishlists()}
         </div>
     );
   }

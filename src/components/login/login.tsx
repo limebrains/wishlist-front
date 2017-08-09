@@ -1,6 +1,5 @@
 import * as React from 'react';
 import '../layout.scss';
-import '../CSS/milligram.css';
 import {login} from "../../actions/loginRegister";
 import {browserHistory} from "react-router";
 import {connect} from "react-redux";
