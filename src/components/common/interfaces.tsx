@@ -4,12 +4,17 @@ export interface Iwishlist {
   date_created: string;
   date_updated: string;
   pk: number;
-  items?: any;
+  items?: Iitem[];
   length: number;
   expand: boolean;
   owner: Iuser;
   users: Iuser[];
 
+}
+
+interface Iitem {
+  pk: number;
+  name: string;
 }
 
 export interface Iuser {

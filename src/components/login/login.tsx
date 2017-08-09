@@ -54,8 +54,8 @@ export default class LoginForm extends React.Component<IProps, IState>  {
   public render() {
     return (
         <div className="container">
-          <div className="row row-center center">
-            <div className="column column-60">
+          <div className="row center">
+            <div className="col-xs-8">
               <form onSubmit={this.makelogin}>
                 <fieldset>
                   <label htmlFor="nameField">Username</label>

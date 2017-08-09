@@ -8,6 +8,7 @@ import {retrieveSessionToken, getUserData, login} from "../../actions/loginRegis
 import {Iuser} from "../common/interfaces";
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import Modal from 'react-modal';
+import LoginForm from "../login/login";
 
 
 interface IProps {
@@ -52,10 +53,6 @@ export default class LoginComponent extends React.Component<IProps, IState> {
     };
   }
 
-  public handleChange = (event: any): void =>{
-    this.setState({...this.state, [event.target.name]: event.target.value });
-  };
-
   public componentWillMount(){
     if (!this.props.token){
       this.props.retrieveSessionToken();
@@ -76,45 +73,18 @@ export default class LoginComponent extends React.Component<IProps, IState> {
     this.setState({modalIsOpen: false});
   };
 
-  public makelogin = (event: any): void => {
-    event.preventDefault();
-    const {username, password} = this.state;
-    this.props.login(username, password);
-    if(this.props.token){
-      browserHistory.push('/');
-    }
-  };
-
 
   public renderLogin() {
 
     return(
-        <div className="column column-30 right">
+        <div className="col-sm-3">
           <span onClick={this.openModal}>Login</span> or register!
           <Modal
               isOpen={this.state.modalIsOpen}
               onRequestClose={this.closeModal}
               contentLabel="Example Modal"
           >
-            <h2>Login</h2>
-            <div className="row row-center center">
-              <div className="column column-60">
-                <form onSubmit={this.makelogin}>
-                  <fieldset>
-                    <label htmlFor="nameField">Username</label>
-                    <input type="text" name="username" onChange={this.handleChange} />
-                    <label htmlFor="passwordField">Password</label>
-                    <input type="password" name="password" onChange={this.handleChange} />
-                    <div className="center">
-                      <input type="submit"
-                             value="Login"
-                             className="button-primary"
-                      />
-                    </div>
-                  </fieldset>
-                </form>
-              </div>
-            </div>
+            <LoginForm />
 
             <button onClick={this.closeModal}>close</button>
           </Modal>

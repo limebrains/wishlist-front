@@ -50,8 +50,10 @@ body{
     border-right: 5px solid rgba(255,255,255,0.35);
     border-bottom: 2px solid rgba(255,255,255,0.35);
     box-shadow: rgba(0,0,0,0.4) 0 1px 15px;
-    padding-right: 25px !important;
     margin-bottom: 10px !important;
+    @media (min-width: 768px) {
+      padding-right: 25px !important;
+    }
 
     .wishlist-detail-info {
       font-size: 1.5rem;
@@ -113,10 +115,54 @@ body{
   font-weight: 400;
 }
 
-ul.dropdown-menu {
-  justify-content:flex-end;
-  align-items:center;
-  float: right;
+
+
+.dropdown {
+  list-style: none;
+
+  a {
+    color: #ffffff;
+
+    &:hover {
+      color: #ffffff;
+    }
+    &:visited {
+      color: #ffffff;
+    }
+    &:focus {
+      color: #ffffff;
+
+    }
+
+
+  }
+
+  .dropdown-menu {
+    background-color: $panels;
+
+    li {
+      background-color: $panels;
+      &:hover {
+        background-color: rgb(255, 39, 44);
+
+      }
+    }
+    a {
+      background-color: $panels;
+      &:focus {
+        background-color: $panels;
+      }
+
+      &:hover {
+        background-color: rgb(255, 252, 137);
+        transition: 1s;
+        box-shadow: rgba(0,0,0,0.4) 0 1px 15px;
+
+      }
+    }
+
+  }
+
 }
 
 .center {
