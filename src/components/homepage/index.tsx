@@ -31,16 +31,8 @@ export default class LoginOrShow extends React.Component<IProps, IState> {
   public render() {
     if (!this.props.token){
       return(
-          <div className="row container-fluid">
-            <div className="">
-              <Link to="/login">
-                <button className="button">login</button>
-              </Link>
-              <strong> or </strong>
-              <button className="button button-outline">
-                register
-              </button>
-            </div>
+          <div className="row row-center container">
+            <h1>Welcome to wishlist app</h1>
           </div>
       );
     }

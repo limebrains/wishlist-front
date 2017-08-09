@@ -4,6 +4,7 @@ import {Config} from "../constants";
 export const LOGIN = 'login';
 export const RETRIEVE_TOKEN = 'retrieve_token';
 export const GET_USER_DATA = 'get_user_data';
+export const LOGOUT = 'logout';
 const {
     API_URL,
     TOKEN_URL,
@@ -32,6 +33,12 @@ export const getUserData = (token: string) => {
     return {
     payload: userData,
     type: GET_USER_DATA,
+  }
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT,
   }
 };
 

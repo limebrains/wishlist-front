@@ -4,7 +4,7 @@ import '../CSS/milligram.css';
 
 import {browserHistory} from "react-router";
 import {connect} from "react-redux";
-import {retrieveSessionToken, getUserData, login} from "../../actions/loginRegister";
+import {retrieveSessionToken, getUserData, login, logout} from "../../actions/loginRegister";
 import {Iuser} from "../common/interfaces";
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import Modal from 'react-modal';
@@ -19,6 +19,7 @@ interface IProps {
   getUserData?: any;
   retrieveSessionToken?: any;
   login?: any;
+  logout?: any;
 }
 
 interface IState {
@@ -37,7 +38,7 @@ const mapStateToProps = (state: any): IProps => {
   };
 };
 
-const mapDispatchToProps = {retrieveSessionToken, getUserData, login};
+const mapDispatchToProps = {retrieveSessionToken, getUserData, login, logout};
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
 export default class LoginComponent extends React.Component<IProps, IState> {
@@ -92,13 +93,17 @@ export default class LoginComponent extends React.Component<IProps, IState> {
     );
   }
 
+  public makeLogout = (e: any) => {
+    this.props.logout();
+};
+
   public renderDropdownMenuAndUsername() {
     return (
         <div className="col-sm-3">
           <NavDropdown eventKey='1'
                        title={`Hello ${this.props.userData.username}!`}
                        id="login-dropdown">
-            <MenuItem eventKey="3.1">Logout</MenuItem>
+            <MenuItem eventKey="3.1" onClick={this.makeLogout}>Logout</MenuItem>
 
 
           </NavDropdown>

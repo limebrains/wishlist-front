@@ -1,4 +1,4 @@
-import {LOGIN, RETRIEVE_TOKEN, GET_USER_DATA} from '../actions/loginRegister';
+import {LOGIN, RETRIEVE_TOKEN, GET_USER_DATA, LOGOUT} from '../actions/loginRegister';
 import {Iuser} from "../components/common/interfaces";
 const localStorage = require('local-storage-fallback');
 
@@ -33,6 +33,14 @@ export const saveSessionToken = (token: string) => {
   }
 };
 
+export const destorySessionToken = () => {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_SAVED_TOKEN, null);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 
 const accountReducer = (state = initialState, action: any ) => {
   switch (action.type) {
@@ -42,6 +50,11 @@ const accountReducer = (state = initialState, action: any ) => {
       return {
         ...state,
         token: action.payload.data.token
+      };
+    case LOGOUT:
+      destorySessionToken();
+      return {
+        state: null
       };
     case RETRIEVE_TOKEN:
       return{
