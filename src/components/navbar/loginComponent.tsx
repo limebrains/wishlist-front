@@ -1,8 +1,6 @@
 import * as React from 'react';
 import '../layout.scss';
-import '../CSS/milligram.css';
 
-import {browserHistory} from "react-router";
 import {connect} from "react-redux";
 import {retrieveSessionToken, getUserData, login, logout} from "../../actions/loginRegister";
 import {Iuser} from "../common/interfaces";
