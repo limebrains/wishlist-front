@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Field, reduxForm } from 'redux-form'
-import {login} from "../actions/loginRegister";
+import {login} from "../../actions/loginRegister";
 
 let LoginForm = (props: any) => {
   const { handleSubmit } = props;

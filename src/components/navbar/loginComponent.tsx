@@ -6,7 +6,7 @@ import {retrieveSessionToken, getUserData, login, logout} from "../../actions/lo
 import {Iuser} from "../common/interfaces";
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import Modal from 'react-modal';
-import LoginForm from "../../Forms/LoginForm";
+import LoginForm from "../Forms/LoginForm";
 import {browserHistory} from "react-router";
 
 
@@ -74,7 +74,7 @@ export default class LoginComponent extends React.Component<IProps, IState> {
   };
 
 
-  public openModal = () => {
+  public openLoginModal = () => {
     this.setState({modalIsOpen: true});
   };
 
@@ -82,26 +82,33 @@ export default class LoginComponent extends React.Component<IProps, IState> {
     this.setState({modalIsOpen: false});
   };
 
+  public loginModal = () => {
+    return (
+        <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            contentLabel="Example Modal"
+        >
+          <div className="row center">
+            <div className="col-xs-8">
+              <LoginForm onSubmit={this.makelogin} />
+            </div>
+          </div>
+
+
+          <button onClick={this.closeModal}>close</button>
+        </Modal>
+    );
+
+  };
+
 
   public renderLogin() {
 
     return(
         <div className="col-sm-3">
-          Welcome! <span className="click-activator" onClick={this.openModal}>Login</span> or <span className="click-activator">register</span>!
-          <Modal
-              isOpen={this.state.modalIsOpen}
-              onRequestClose={this.closeModal}
-              contentLabel="Example Modal"
-          >
-            <div className="row center">
-              <div className="col-xs-8">
-                <LoginForm onSubmit={this.makelogin} />
-              </div>
-            </div>
-
-
-            <button onClick={this.closeModal}>close</button>
-          </Modal>
+          Welcome! <span className="click-activator" onClick={this.openLoginModal}>Login</span> or <span className="click-activator">register</span>!
+          {this.loginModal()}
         </div>
     );
   }
