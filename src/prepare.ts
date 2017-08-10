@@ -11,12 +11,14 @@ import * as reactRouter from 'react-router';
 
 /* Reducers */
 import * as reducers from './reducers';
+import { reducer as formReducer } from 'redux-form'
 
 /* App configs */
 import config from './config';
 
 /* Combine Reducers */
 const reducer = combineReducers({
+  form: formReducer,
   routing: routerReducer,
   ...reducers,
 });
@@ -39,6 +41,7 @@ function configureStore(initialState: any): any {
     // Enable Webpack hot module replacement for reducers
     hot.accept('./reducers', () => {
       const nextReducer = combineReducers({
+        form: formReducer,
         routing: routerReducer,
       });
       createdStore.replaceReducer(nextReducer);

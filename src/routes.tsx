@@ -16,7 +16,6 @@ import config from './config';
 import { NotFound } from './components';
 import IndexPage from "./components/homepage/layout";
 import Navbar from './components/navbar/layout';
-import LoginForm from "./components/login/login";
 
 /* Routes */
 const { urlPrefix } = config;
@@ -26,7 +25,6 @@ const Routes: StatelessComponent<any> = (): any => {
             <Router history={ history }>
                 <Route path={ urlPrefix } component={Navbar}>
                     <IndexRoute component= {IndexPage} />
-                    <Route path="/login" component={ LoginForm } />
                 </Route>
                 <Route path="*" component={ NotFound } />
             </Router>

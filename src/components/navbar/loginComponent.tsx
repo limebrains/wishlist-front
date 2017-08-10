@@ -6,7 +6,8 @@ import {retrieveSessionToken, getUserData, login, logout} from "../../actions/lo
 import {Iuser} from "../common/interfaces";
 import { NavDropdown, MenuItem } from 'react-bootstrap';
 import Modal from 'react-modal';
-import LoginForm from "../login/login";
+import LoginForm from "../../Forms/LoginForm";
+import {browserHistory} from "react-router";
 
 
 interface IProps {
@@ -64,6 +65,15 @@ export default class LoginComponent extends React.Component<IProps, IState> {
     }
   }
 
+
+  public makelogin = (values: {username: string, password: string}): void => {
+    this.props.login(values.username, values.password);
+    if(this.props.token){
+      browserHistory.push('/');
+    }
+  };
+
+
   public openModal = () => {
     this.setState({modalIsOpen: true});
   };
@@ -77,13 +87,18 @@ export default class LoginComponent extends React.Component<IProps, IState> {
 
     return(
         <div className="col-sm-3">
-          <span onClick={this.openModal}>Login</span> or register!
+          Welcome! <span className="click-activator" onClick={this.openModal}>Login</span> or <span className="click-activator">register</span>!
           <Modal
               isOpen={this.state.modalIsOpen}
               onRequestClose={this.closeModal}
               contentLabel="Example Modal"
           >
-            <LoginForm />
+            <div className="row center">
+              <div className="col-xs-8">
+                <LoginForm onSubmit={this.makelogin} />
+              </div>
+            </div>
+
 
             <button onClick={this.closeModal}>close</button>
           </Modal>
@@ -93,7 +108,7 @@ export default class LoginComponent extends React.Component<IProps, IState> {
 
   public makeLogout = (e: any) => {
     this.props.logout();
-};
+  };
 
   public renderDropdownMenuAndUsername() {
     return (
