@@ -1,0 +1,216 @@
+$linkhormal: #39c;
+$linkhover: #94c;
+$background: rgb(255, 255, 255);
+$panels: rgb(255, 255, 204);
+$panels-font-colour: #000000;
+$expand-colour: #0b5fe5;
+$wishlistBackground: rgba(255, 255, 204,0.6);
+$navbarBackground: #e45044;
+
+body{
+  background: $background;;
+}
+
+.container {
+  margin: 0 auto;
+
+  header {
+    float: left;
+    position: fixed;
+    width: 270px;
+
+    a {
+      color: $linkhormal;
+      font-weight: bold;
+      text-decoration: none;
+
+      &:hover {
+        color: $linkhover;
+      }
+    }
+  }
+
+  footer {
+    bottom: 50px;
+    float: left;
+    position: fixed;
+    width: 270px;
+  }
+
+
+  .content {
+    float: right;
+    padding-bottom: 50px;
+    width: 500px;
+  }
+
+  .wishlist {
+    background: $wishlistBackground;
+    border-left: 5px solid rgba(255,255,255,0.35);
+    border-right: 5px solid rgba(255,255,255,0.35);
+    border-bottom: 2px solid rgba(255,255,255,0.35);
+    box-shadow: rgba(0,0,0,0.4) 0 1px 15px;
+    margin-bottom: 10px !important;
+    @media (min-width: 768px) {
+      padding-right: 25px !important;
+    }
+
+    .wishlist-detail-info {
+      font-size: 1.5rem;
+    }
+
+    .item-details {
+
+      .item-name {
+        background: $navbarBackground;
+        margin: 10px 10px 10px 10px;
+        color: #ffffff;
+        font-weight: 300;
+        font-size: 1.4rem;
+
+
+      }
+
+    }
+
+  }
+
+  .wishlist-panel{
+    background: $panels;
+    color: $panels-font-colour;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 10px 10px 25px !important;
+    overflow-x: scroll;
+
+  }
+
+  .wishlist-name{
+    font-weight: 300;
+    letter-spacing:-.05rem;
+    font-size: 2rem;
+  }
+
+  .dropdown-arrow{
+    font-weight: 900;
+    cursor: pointer;
+    cursor: hand;
+    font-size: 2rem;
+    margin-left: 1vw;
+
+    &:hover {
+      color: $expand-colour;
+      transition: 1s;
+    }
+  }
+}
+.navbar {
+  background: $navbarBackground;
+  padding-top: 25px !important;
+  margin-top: -15px !important;
+  padding-bottom: 10px !important;
+  border-left: 30px solid rgba(0,0,0,0.1);
+  border-right: 30px solid rgba(0,0,0,0.1);
+  color: #ffffff;
+  font-weight: 400;
+}
+
+
+
+.dropdown {
+  list-style: none;
+
+  a {
+    color: #ffffff;
+
+    &:hover {
+      color: #ffffff;
+    }
+    &:visited {
+      color: #ffffff;
+    }
+    &:focus {
+      color: #ffffff;
+
+    }
+
+
+  }
+
+  .dropdown-menu {
+    background-color: $panels;
+
+    li {
+      background-color: $panels;
+      &:hover {
+        background-color: rgb(255, 39, 44);
+
+      }
+    }
+    a {
+      background-color: $panels;
+      &:focus {
+        background-color: $panels;
+      }
+
+      &:hover {
+        background-color: rgb(255, 252, 137);
+        transition: 1s;
+        box-shadow: rgba(0,0,0,0.4) 0 1px 15px;
+
+      }
+    }
+
+  }
+
+}
+.click-activator{
+font-weight: 600;
+  color: #324ec9;
+  cursor: pointer;
+}
+
+.center {
+  justify-content:center;
+  align-items:center;
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.welcome-panel{
+  margin-top: 15vh;
+  padding-top: 15px;
+padding-bottom: 15px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
