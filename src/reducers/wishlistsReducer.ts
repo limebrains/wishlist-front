@@ -1,4 +1,3 @@
-const update = require('react-addons-update');
 import {GET_USER_WISHLISTS, GET_WISHLIST_ITEMS, DROPDOWN_WISHLIST} from "../actions/wishlistsAndItems";
 import {Iwishlist} from "../components/common/interfaces";
 
@@ -12,7 +11,6 @@ const initialState: IauthState = {
   items: []
 };
 
-
 const wishlistReducer = (state = initialState, action: any ) => {
   switch (action.type) {
 
@@ -25,7 +23,6 @@ const wishlistReducer = (state = initialState, action: any ) => {
       return{
         ...state,
         wishlists: [...state.wishlists, ...wishlists ],
-
       };
 
     case GET_WISHLIST_ITEMS:
@@ -42,10 +39,6 @@ const wishlistReducer = (state = initialState, action: any ) => {
           ...state.wishlists.slice(action.id+1)
         ]
       };
-
-
-
-
 
     default:
       return state;

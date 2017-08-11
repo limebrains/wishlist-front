@@ -12,6 +12,10 @@ export interface Iwishlist {
 
 }
 
+export interface Imodal {
+  loginModal: boolean,
+}
+
 interface Iitem {
   pk: number;
   name: string;

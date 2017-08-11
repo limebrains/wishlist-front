@@ -2,12 +2,9 @@ import * as React from 'react';
 import '../layout.scss';
 
 import {connect} from "react-redux";
-import {retrieveSessionToken, getUserData, login, logout} from "../../actions/loginRegister";
+import {retrieveSessionToken, getUserData, logout} from "../../actions/loginRegister";
 import {Iuser} from "../common/interfaces";
 import { NavDropdown, MenuItem } from 'react-bootstrap';
-import Modal from 'react-modal';
-import LoginForm from "../Forms/LoginForm";
-import {browserHistory} from "react-router";
 
 
 interface IProps {
@@ -17,16 +14,12 @@ interface IProps {
   userData?: Iuser;
   getUserData?: any;
   retrieveSessionToken?: any;
-  login?: any;
   logout?: any;
 }
 
 interface IState {
   token?: string;
   userData?: Iuser;
-  modalIsOpen?: boolean;
-  username?: string;
-  password?: string;
 }
 
 
@@ -37,20 +30,13 @@ const mapStateToProps = (state: any): IProps => {
   };
 };
 
-const mapDispatchToProps = {retrieveSessionToken, getUserData, login, logout};
+const mapDispatchToProps = {retrieveSessionToken, getUserData, logout};
 
 @(connect(mapStateToProps, mapDispatchToProps) as any)
 export default class LoginComponent extends React.Component<IProps, IState> {
 
   constructor(props: any) {
     super(props);
-
-    this.state = {
-      modalIsOpen: false,
-      username: '',
-      password: '',
-
-    };
   }
 
   public componentWillMount(){
@@ -66,53 +52,6 @@ export default class LoginComponent extends React.Component<IProps, IState> {
   }
 
 
-  public makelogin = (values: {username: string, password: string}): void => {
-    this.props.login(values.username, values.password);
-    if(this.props.token){
-      browserHistory.push('/');
-    }
-  };
-
-
-  public openLoginModal = () => {
-    this.setState({modalIsOpen: true});
-  };
-
-  public closeModal = () => {
-    this.setState({modalIsOpen: false});
-  };
-
-  public loginModal = () => {
-    return (
-        <Modal
-            isOpen={this.state.modalIsOpen}
-            onRequestClose={this.closeModal}
-            contentLabel="Example Modal"
-        >
-          <div className="row center">
-            <div className="col-xs-8">
-              <LoginForm onSubmit={this.makelogin} />
-            </div>
-          </div>
-
-
-          <button onClick={this.closeModal}>close</button>
-        </Modal>
-    );
-
-  };
-
-
-  public renderLogin() {
-
-    return(
-        <div className="col-sm-3">
-          Welcome! <span className="click-activator" onClick={this.openLoginModal}>Login</span> or <span className="click-activator">register</span>!
-          {this.loginModal()}
-        </div>
-    );
-  }
-
   public makeLogout = (e: any) => {
     this.props.logout();
   };
@@ -124,8 +63,6 @@ export default class LoginComponent extends React.Component<IProps, IState> {
                        title={`Hello ${this.props.userData.username}!`}
                        id="login-dropdown">
             <MenuItem eventKey="3.1" onClick={this.makeLogout}>Logout</MenuItem>
-
-
           </NavDropdown>
         </div>
     );
@@ -133,14 +70,11 @@ export default class LoginComponent extends React.Component<IProps, IState> {
 
 
   public render() {
-
     if (this.props.userData) {
       return (
           this.renderDropdownMenuAndUsername()
       );
     }
-    else {
-      return ( this.renderLogin() );
+      else return(<div className="col-sm-3" key="2137"></div>);
     }
-  }
 }
